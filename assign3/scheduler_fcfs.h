@@ -15,12 +15,11 @@
  */
 class SchedulerFCFS : public Scheduler {
 private:
-    int wt =0;
     std::vector<std::string>* proc_name;
     std::vector<int>* proc_burst_times;
     std::vector<int>* proc_wait_times;
     std::vector<int>* proc_turnaround_times;
-
+    
 public:
     /**
      * @brief Construct a new SchedulerFCFS object
