@@ -7,6 +7,9 @@
  */
 
 #include "scheduler_fcfs.h"
+#include <iostream>
+#include <string>
+using namespace std;
 
 // TODO: add implementation of SchedulerFCFS constructor, destrcutor and 
 // member functions init, print_results, and simulate here
@@ -15,30 +18,36 @@
  * @brief Constructor for the ReadyQueue class.
  */
  SchedulerFCFS::SchedulerFCFS()  {
-     //TODO: add your code here
+    proc_name = new vector<string>();
+    proc_burst_times = new vector<int>();
+    proc_turnaround_times = new vector<int>();
+    proc_wait_times = new vector<int>();
  }
 
 /**
  *@brief Destructor
 */
 SchedulerFCFS::~SchedulerFCFS() {
-    //TODO: add your code to release dynamically allocate memory
+    delete proc_name;
+    delete proc_burst_times;
+    delete proc_wait_times;
+    delete proc_turnaround_times;
 }
 
 /**
- * @brief Add a PCB representing a process into the ready queue.
- *
- * @param pcbPtr: the pointer to the PCB to be added
+ * @brief This function is called once before the simulation starts.
+ *        It is used to initialize the scheduler.
+ * @param process_list The list of processes in the simulation.
  */
 void SchedulerFCFS::init(std::vector<PCB>& process_list){
-    //TODO: add your code here
-    // When adding a PCB to the queue, you must change its state to READY.
+    for (int i = 0; i < process_list.size(); i++) {
+        proc_name->push_back(process_list[i].name);
+        proc_burst_times->push_back(process_list[i].burst_time);
+    }
 }
-
 /**
- * @brief Remove and return the PCB with the highest priority from the queue
- *
- * @return PCB*: the pointer to the PCB with the highest priority
+ * @brief This function is called once after the simulation ends.
+ *        It is used to print out the results of the simulation.
  */
 void SchedulerFCFS::print_results() {
     //TODO: add your code here
@@ -46,10 +55,16 @@ void SchedulerFCFS::print_results() {
 }
 
 /**
- * @brief Returns the number of elements in the queue.
- *
- * @return int: the number of PCBs in the queue
+ * @brief This function simulates the scheduling of processes in the ready queue.
+ *        It stops when all processes are finished.
  */
 void SchedulerFCFS::simulate(){
-    //TODO: add your code here 
+    int size = proc_burst_times->size();
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Running Process " << proc_name->at(i) << " for" << proc_burst_times->at(i) << " time units" << endl;
+        proc_wait_times->push_back(wt);
+        wt = wt + proc_burst_times->at(i);
+        proc_turnaround_times->at(i);
+    }
 }
