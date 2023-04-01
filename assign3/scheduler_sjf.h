@@ -1,7 +1,7 @@
 /**
 * Assignment 3: CPU Scheduler
  * @file scheduler_fcfs.h
- * @author ??? (TODO: your name)
+ * @author Jorge Diaz
  * @brief This Scheduler class implements the SJF scheduling algorithm.
  * @version 0.1
  */
@@ -15,8 +15,10 @@
 
 class SchedulerSJF : public Scheduler {
 private:
-    // TODO: add necessary member variables here for your implementation
-
+    //std::vector<PCB>* process_list_ptr;
+    std::vector<PCB> process_list_copy;
+    std::vector<int>* proc_wait_times;
+    std::vector<int>* proc_turnaround_times;
 public:
     /**
      * @brief Construct a new SchedulerSJF object
@@ -43,5 +45,6 @@ public:
      *        It stops when all processes are finished.
      */
     void simulate() override;
+
 };
 #endif //ASSIGN3_SCHEDULER_SJF_H

@@ -16,7 +16,9 @@
 
 class SchedulerPriority : public Scheduler {
 private:
-    // TODO: add necessary member variables here for your implementation
+    std::vector<PCB> process_list_copy;
+    std::vector<int>* proc_wait_times;
+    std::vector<int>* proc_turnaround_times;
 
 public:
     /**
