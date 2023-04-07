@@ -10,16 +10,15 @@
 #define ASSIGN3_SCHEDULER_FCFS_H
 
 #include "scheduler.h"
+#include <vector>
+
+using namespace std;
 /**
  * @brief This Scheduler class implements the FCFS scheduling algorithm.
  */
 class SchedulerFCFS : public Scheduler {
 private:
-    std::vector<std::string>* proc_name;
-    std::vector<int>* proc_burst_times;
-    std::vector<int>* proc_wait_times;
-    std::vector<int>* proc_turnaround_times;
-    
+    vector<PCB> process_list_copy;
 public:
     /**
      * @brief Construct a new SchedulerFCFS object

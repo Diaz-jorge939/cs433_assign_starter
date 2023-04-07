@@ -33,6 +33,14 @@ public:
     // The arrival time of the process
     unsigned int arrival_time;
 
+    unsigned int wait_time;
+
+    unsigned int turnaround_time;
+
+    bool terminated;
+
+    unsigned int completion_time; 
+
     /**
      * @brief Construct a new PCB object
      * @param id: each process has a unique ID
@@ -45,6 +53,10 @@ public:
         this->priority = priority;
         this->burst_time = burst_time;
         this->arrival_time = 0;
+        this->wait_time = 0;
+        this->turnaround_time = 0;
+        this->terminated = false;
+        this->completion_time = 0;
     }
 
     /**
